@@ -182,7 +182,7 @@ export const VideoModal: React.FC<VideoModalProps> = ({
               return (
                 <SwiperSlide key={video.id} className="flex items-center justify-center">
                   <div className={`w-full h-full transition-all duration-300 flex items-center justify-center ${
-                    isActive ? 'scale-100 opacity-100 z-10' : 'scale-90 opacity-25 z-0 pointer-events-none select-none'
+                    isActive ? 'scale-100 opacity-100 z-10' : 'scale-90 opacity-25 z-0'
                   }`}>
                     {isNear ? (
                       <VideoPlayer
