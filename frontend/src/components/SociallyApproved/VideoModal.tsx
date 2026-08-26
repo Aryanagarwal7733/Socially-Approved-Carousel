@@ -158,11 +158,10 @@ export const VideoModal: React.FC<VideoModalProps> = ({
             direction="horizontal"
             keyboard={{ enabled: true }}
             centeredSlides={true}
-            spaceBetween={16}
-            slidesPerView={1.2}
+            spaceBetween={10}
+            slidesPerView={3}
             breakpoints={{
               768: {
-                slidesPerView: 3,
                 spaceBetween: 30,
               }
             }}
