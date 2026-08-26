@@ -1,8 +1,8 @@
 {
   "name": "social-video-carousel-backend",
   "version": "1.0.0",
-  "description": "Express backend for Socially Approved Video Carousel",
   "main": "src/index.ts",
+  "type": "module",
   "scripts": {
     "dev": "tsx watch src/index.ts",
     "build": "tsc",
