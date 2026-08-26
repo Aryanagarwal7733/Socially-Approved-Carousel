@@ -17,12 +17,19 @@
   border-radius: 9999px !important;
   width: 46px !important;
   height: 46px !important;
-  display: flex !important;
+  display: none !important; /* Hide on mobile by default */
   align-items: center !important;
   justify-content: center !important;
   z-index: 40 !important;
   transition: all 0.2s ease-in-out !important;
   box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1) !important;
+}
+
+@media (min-width: 768px) {
+  .swiper-button-next,
+  .swiper-button-prev {
+    display: flex !important; /* Show on desktop */
+  }
 }
 
 .swiper-button-next:hover,
