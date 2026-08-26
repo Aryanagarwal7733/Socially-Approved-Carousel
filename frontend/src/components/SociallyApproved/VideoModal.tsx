@@ -136,7 +136,8 @@ export const VideoModal: React.FC<VideoModalProps> = ({
       {/* Close button */}
       <button
         onClick={onClose}
-        className="absolute top-4 right-4 z-55 bg-black/60 hover:bg-black/80 text-white p-3 rounded-full border border-white/10 hover:scale-105 transition-all"
+        className="absolute top-4 right-4 bg-zinc-900/90 hover:bg-zinc-800 text-white p-3 rounded-full border border-white/10 hover:scale-105 transition-all shadow-lg"
+        style={{ zIndex: 100 }}
       >
         <X size={24} />
       </button>
