@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heart, Share2, MessageCircle, Volume2, VolumeX, Play, Pause } from 'lucide-react';
+import { Heart, Share2, MessageCircle, Volume2, VolumeX, Play } from 'lucide-react';
 
 interface VideoControlsProps {
   title: string;

@@ -55,6 +55,7 @@ export const VideoCarousel: React.FC<VideoCarouselProps> = ({
           <SwiperSlide key={video.id} className="h-full">
             <VideoCard
               id={video.id}
+              thumbnail={video.thumbnail}
               videoUrl={video.videoUrl}
               title={video.title}
               likes={video.likes}

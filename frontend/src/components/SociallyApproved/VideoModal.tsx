@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Mousewheel, Keyboard } from 'swiper/modules';
-import { X, Send, Heart, Share2, MessageCircle, Volume2, VolumeX } from 'lucide-react';
+import { Navigation, Keyboard } from 'swiper/modules';
+import { X, Send } from 'lucide-react';
 import { Video, Comment } from '../../types/video';
 import VideoPlayer from './VideoPlayer';
 import { addComment, fetchComments } from '../../services/videoApi';
@@ -115,7 +115,7 @@ export const VideoModal: React.FC<VideoModalProps> = ({
   };
 
   const handleShareClick = (video: Video) => {
-    const videoUrl = `${window.location.origin}${video.videoUrl}`;
+    const videoUrl = video.videoUrl;
     
     // Copy link
     navigator.clipboard.writeText(videoUrl)

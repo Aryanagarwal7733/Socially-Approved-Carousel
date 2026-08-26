@@ -1,15 +1,30 @@
 import { Video, LikeResponse, ShareResponse, Comment } from '../types/video';
 
+export const API_BASE_URL = (import.meta.env.VITE_API_URL || '').replace(/\/$/, '');
+
+function apiUrl(path: string): string {
+  return `${API_BASE_URL}${path}`;
+}
+
+function assetUrl(path: string): string {
+  return path.startsWith('http') ? path : apiUrl(path);
+}
+
 export async function fetchVideos(): Promise<Video[]> {
-  const res = await fetch('/api/videos');
+  const res = await fetch(apiUrl('/api/videos'));
   if (!res.ok) {
     throw new Error(`Failed to fetch videos: ${res.statusText}`);
   }
-  return res.json();
+  const videos: Video[] = await res.json();
+  return videos.map((video) => ({
+    ...video,
+    videoUrl: assetUrl(video.videoUrl),
+    thumbnail: assetUrl(video.thumbnail),
+  }));
 }
 
 export async function likeVideo(id: string, userId: string): Promise<LikeResponse> {
-  const res = await fetch(`/api/videos/${id}/like`, {
+  const res = await fetch(apiUrl(`/api/videos/${id}/like`), {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -23,7 +38,7 @@ export async function likeVideo(id: string, userId: string): Promise<LikeRespons
 }
 
 export async function shareVideo(id: string, platform: string): Promise<ShareResponse> {
-  const res = await fetch(`/api/videos/${id}/share`, {
+  const res = await fetch(apiUrl(`/api/videos/${id}/share`), {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -37,7 +52,7 @@ export async function shareVideo(id: string, platform: string): Promise<ShareRes
 }
 
 export async function fetchComments(id: string): Promise<Comment[]> {
-  const res = await fetch(`/api/videos/${id}/comments`);
+  const res = await fetch(apiUrl(`/api/videos/${id}/comments`));
   if (!res.ok) {
     throw new Error(`Failed to fetch comments: ${res.statusText}`);
   }
@@ -45,7 +60,7 @@ export async function fetchComments(id: string): Promise<Comment[]> {
 }
 
 export async function addComment(id: string, username: string, text: string): Promise<Comment> {
-  const res = await fetch(`/api/videos/${id}/comments`, {
+  const res = await fetch(apiUrl(`/api/videos/${id}/comments`), {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

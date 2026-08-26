@@ -8,3 +8,11 @@ services:
     envVars:
       - key: MONGODB_URI
         sync: false
+  - type: static_site
+    name: socially-approved-frontend
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    envVars:
+      - key: VITE_API_URL
+        sync: false
